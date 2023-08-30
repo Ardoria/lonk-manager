@@ -53,22 +53,21 @@ angular.module('favoriteApp', [])
           cancelButtonColor: '#d33',
           confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
-          if (result.isConfirmed) {
-              $http.delete('/api/link/' + id).then(
-                  function() {
-                      $scope.refresh();
-                          }, function(error) {
-                              alert(error.data.message);
-                  }
-              )
-              Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            )
-          }
-        })
-        }
+            if (result.isConfirmed) {
+                $http.delete('/api/link/' + id).then(
+                    function() {
+                        $scope.refresh();
+                    }, function(error) {
+                        alert(error.data.message);
+                    }
+                )
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
+        })}
 
         $scope.refresh = function() {
             $http.get('api/categories').then(

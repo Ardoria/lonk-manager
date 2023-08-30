@@ -19,15 +19,19 @@
         <h1 class="title">Favorite Manager</h1>
 
         <div class="box" data-ng-if="mode == 'view'">
-          <h2 class="title">Main menu</h2>
           <div class="columns">
-            <div class="column">
+            <div class="column  is-narrow is-offset-11">
+              <button class="button is-primary" data-ng-click="setMode('creation')">Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="box" data-ng-if="mode == 'view'">
+          <div class="columns">
+            <div class="column is-narrow ">
               <div class="select is-fullwidth">
                 <select data-ng-change="refresh()" data-ng-model="filter.category" data-ng-options="item.id as item.name for item in categories" required="required"></select>
               </div>
-            </div>
-            <div class="column  is-narrow">
-              <button class="button is-primary" data-ng-click="setMode('creation')">Add</button>
             </div>
           </div>
         </div>
