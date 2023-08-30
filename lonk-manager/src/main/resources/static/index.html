@@ -71,19 +71,21 @@
                     <th class="is-narrow"><input type="checkbox"></th>
                     <th class="is-narrow">ID</th>
                     <th class="is-narrow">Category</th>
-                    <th>Link</th>
+                    <th colspan="2">Link</th>
                     <th class="is-narrow">Last Update</th>
+
                   </tr>
                 </thead>
                 <tbody>
                   <tr data-ng-if="favorites.length == 0">
-                    <td colspan="4">No data !</td>
+                    <td colspan="6">No data !</td>
                   </tr>
                   <tr data-ng-repeat="f in favorites | orderBy: sortCriteria">
-                    <th><input type="checkbox"></th>
+                    <td><input type="checkbox"></td>
                     <td>{{ f.id }}</td>
                     <td>{{f.category.name}}</td>
                     <td><a data-ng-href="{{f.path}}" target="_blank">{{ f.name }}</a></td>
+                    <td class="is-narrow"><button class="button is-danger is-light is-small" data-ng-click="kick(f.id)">Delete</button></td>
                     <td>{{ f.date | date: 'yyyy-MM-dd' }}</td>
 
                   </tr>

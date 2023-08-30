@@ -43,6 +43,16 @@ angular.module('favoriteApp', [])
             )
         }
 
+        $scope.kick = function(id) {
+            $http.delete('/api/link/' + id).then(
+                function() {
+                    $scope.refresh();
+                }, function(error) {
+                    alert(error.data.message);
+                }
+            )
+        }
+
         $scope.refresh = function() {
             $http.get('api/categories').then(
                 function(response) {
