@@ -32,7 +32,7 @@ public class Link {
 
 
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false, foreignKey = @ForeignKey(name = "FK_CATEGORY_LINK"))
     @Fetch(FetchMode.JOIN)
     private Category category;

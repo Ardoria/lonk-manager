@@ -44,7 +44,7 @@ public class LinkController {
 
     @DeleteMapping(path = "/link/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    void delete(@PathVariable Long id) {
+    void delete(@PathVariable long id) {
         linkService.delete(id);
     }
 

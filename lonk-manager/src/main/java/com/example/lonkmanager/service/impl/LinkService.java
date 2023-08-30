@@ -91,8 +91,5 @@ public class LinkService implements ILinkService {
         return null;
     }
 
-    public LinkItem save(LinkItem link) {
-        Link entity;
-        return null;
-    }
+
 }
