@@ -1,0 +1,31 @@
+<div class="box">
+    <div class="columns">
+        <div class="column">
+            <h2 class="title">Definition of a new Favorite</h2>
+            <form name="form" class="form-validation" novalidate role="form">
+                <div class="field">
+                    <label class="label">Link *</label>
+                    <div class="control">
+                        <input type="text" data-ng-model="favorite.link" class="input" required="required" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Name *</label>
+                    <div class="control">
+                        <input type="text" data-ng-model="favorite.name" class="input" required="required" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Category *</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select data-ng-model="favorite.category" data-ng-options="item.id as item.name for item in categories" required="required"></select>
+                        </div>
+                    </div>
+                </div>
+                <button class="button is-primary" type="button" data-ng-disabled="form.$invalid" data-ng-click="validate()">OK</button>
+                <button class="button is-default" type="button" data-ng-click="cancel()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

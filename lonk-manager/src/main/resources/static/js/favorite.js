@@ -1,5 +1,49 @@
-angular.module('favoriteApp', [])
-    .controller('FavoritesController', function($scope, $http) {
+angular.module('favoriteApp', ['ngDialog'])
+    .controller('AddController', function($scope, $http, ngDialog){
+        $scope.categories = [];
+        $scope.favorite ={
+            category: 0
+        }
+                $scope.filter = {
+                category: 0
+                };
+        $scope.favorites = [];
+        $scope.refresh = function() {
+            $http.get('api/categories').then(
+                function(response) {
+                    response.data.forEach(d => {
+                        $scope.categories.push(d);
+                    })
+                    $scope.favorite.category = $scope.categories[0].id;
+
+                }
+            )
+
+
+        }
+        $scope.cancel = function() {
+            ngDialog.closeAll();
+        }
+        $scope.refresh();
+
+        $scope.validate = function() {
+            $http.post('/api/category/' + $scope.favorite.category + "/links", { id: null, name: $scope.favorite.name, path: $scope.favorite.link }).then(
+                function() {
+                    $scope.refresh();
+                    ngDialog.closeAll();
+                }, function(error) {
+                    alert(error.data.message);
+                }
+            )
+        }
+
+    })
+
+
+
+
+
+    .controller('FavoritesController', function($scope, $http, ngDialog) {
 
         $scope.categories = [];
         $scope.realCategories = [];
@@ -85,6 +129,14 @@ angular.module('favoriteApp', [])
                 }
             )
         }
+
+    $scope.add= function(){
+        ngDialog.open({
+            template: 'views/modal-add.html',
+            controller: 'AddController'
+        });
+    }
+
 
         $scope.refresh();
     });

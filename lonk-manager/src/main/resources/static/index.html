@@ -9,6 +9,9 @@
     <script src="libs/angular/angular.min.js"></script>
     <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js "></script>
     <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css " rel="stylesheet">
+    <link rel="stylesheet" href="libs/ngDialog/ngDialog.min.css">
+    <link rel="stylesheet" href="libs/ngDialog/ngDialog-theme-default.min.css">
+    <script src="libs/ngDialog/ngDialog.min.js"></script>
     <script src="js/favorite.js"></script>
   </head>
   <body data-ng-controller="FavoritesController">
@@ -21,7 +24,7 @@
         <div class="box" data-ng-if="mode == 'view'">
           <div class="columns">
             <div class="column  is-narrow is-offset-11">
-              <button class="button is-primary" data-ng-click="setMode('creation')">Add</button>
+              <button class="button is-primary" data-ng-click="add()">Add</button>
             </div>
           </div>
         </div>
