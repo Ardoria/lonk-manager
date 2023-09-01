@@ -27,10 +27,10 @@ public class LinkController {
         categoryService.delete(id);
     }
 
-    @PostMapping(path = "/category")
-    public CategoryItem saveCategory(@RequestBody CategoryDefinition resource) {
-    return null;
-    }
+//    @PostMapping(path = "/category")
+//    public CategoryItem saveCategory(@RequestBody CategoryDefinition resource) {
+//    return null;
+//    }
 
     @GetMapping(path = "/links")
     List<LinkListItem> findAll() {

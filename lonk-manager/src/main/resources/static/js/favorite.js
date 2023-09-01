@@ -1,4 +1,31 @@
 angular.module('favoriteApp', ['ngDialog'])
+
+    /*---------------------CONTROLLER POUR CATEGORY MODAL---------------------------*/
+
+    .controller('AddCatController', function($scope, $http, ngDialog){
+        $scope.validateCa = function() {
+            console.log($scope.category)
+        }
+        $scope.validateCat = function() {
+            $http.post('/api/category', { id: null, name: $scope.category}).then(
+                function() {
+                    $scope.$parent.refresh();
+                    ngDialog.closeAll();
+                }, function(error) {
+                    alert(error.data.message);
+                }
+            )
+        }
+
+        $scope.cancel = function() {
+            ngDialog.closeAll();
+        }
+    })
+
+
+    /*---------------------CONTROLLER POUR LINK MODAL---------------------------*/
+
+
     .controller('AddController', function($scope, $http, ngDialog){
         $scope.categories = [];
         $scope.favorite ={
@@ -37,6 +64,7 @@ angular.module('favoriteApp', ['ngDialog'])
         }
     })
 
+    /*---------------------CONTROLLER POUR PAGE ACCUEIL---------------------------*/
 
     .controller('FavoritesController', function($scope, $http, ngDialog) {
 
@@ -115,10 +143,16 @@ angular.module('favoriteApp', ['ngDialog'])
             template: 'views/modal-add.html',
             controller: 'AddController',
             scope:$scope
-
         });
     }
 
+    $scope.addCat = function(){
+        ngDialog.open({
+            template: 'views/modal-add-cat.html',
+            controller: 'AddCatController',
+            scope:$scope
+        })
+    }
 
         $scope.refresh();
     });

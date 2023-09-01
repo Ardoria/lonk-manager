@@ -60,7 +60,6 @@ public class LinkService implements ILinkService {
     @Override
     public LinkItem save(LinkDefinition link, long id) {
         try {
-            System.out.println(id);
             Category cat = categoryRepository.findById(id).orElseThrow(() -> new NotFoundException("J'ai pas trouvé ><"));
 
             Link entity;

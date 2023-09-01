@@ -23,8 +23,8 @@
 
         <div class="box" data-ng-if="mode == 'view'">
           <div class="columns">
-            <div class="column  is-narrow is-offset-11">
-              <button class="button is-primary" data-ng-click="add()">Add</button>
+            <div class="column  is-narrow is-offset-10">
+              <button class="button is-primary" data-ng-click="add()">Add Favorite</button>
             </div>
           </div>
         </div>
@@ -34,6 +34,11 @@
             <div class="column is-narrow ">
               <div class="select is-fullwidth">
                 <select data-ng-change="refresh()" data-ng-model="filter.category" data-ng-options="item.id as item.name for item in categories" required="required"></select>
+              </div>
+            </div>
+            <div class="column is-narrow ">
+              <div>
+                <button class="button is-primary" data-ng-click="addCat()">Add Category</button>
               </div>
             </div>
           </div>

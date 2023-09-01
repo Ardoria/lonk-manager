@@ -1,9 +1,6 @@
 package com.example.lonkmanager.controller;
 
-import com.example.lonkmanager.dto.CategoryListItem;
-import com.example.lonkmanager.dto.LinkDefinition;
-import com.example.lonkmanager.dto.LinkItem;
-import com.example.lonkmanager.dto.LinkListItem;
+import com.example.lonkmanager.dto.*;
 import com.example.lonkmanager.service.ICategoryService;
 import com.example.lonkmanager.service.ILinkService;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +30,10 @@ public class CategoryController {
     @PostMapping(path = "/category/{id}/links")
     public LinkItem save(@PathVariable long id, @RequestBody LinkDefinition link) {
         return linkService.save(link, id);
+    }
+
+    @PostMapping(path = "/category")
+    public CategoryItem save(@RequestBody CategoryDefinition cat) {
+        return categoryService.save(cat);
     }
 }

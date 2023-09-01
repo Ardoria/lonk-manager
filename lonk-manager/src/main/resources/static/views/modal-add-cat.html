@@ -1,0 +1,17 @@
+<div class="box">
+    <div class="columns">
+        <div class="column">
+            <h2 class="title">Definition of a new Category</h2>
+            <form name="form" class="form-validation" novalidate role="form">
+                <div class="field">
+                    <label class="label">Category *</label>
+                    <div class="control">
+                        <input type="text" data-ng-model="category" class="input" required="required" />
+                    </div>
+                </div>
+                <button class="button is-primary" type="button" data-ng-disabled="form.$invalid" data-ng-click="validateCat()">OK</button>
+                <button class="button is-default" type="button" data-ng-click="cancel()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
