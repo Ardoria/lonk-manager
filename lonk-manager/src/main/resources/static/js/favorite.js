@@ -4,9 +4,9 @@ angular.module('favoriteApp', ['ngDialog'])
         $scope.favorite ={
             category: 0
         }
-                $scope.filter = {
-                category: 0
-                };
+        $scope.filter = {
+        category: 0
+        };
         $scope.favorites = [];
         $scope.refresh = function() {
             $http.get('api/categories').then(
@@ -15,32 +15,27 @@ angular.module('favoriteApp', ['ngDialog'])
                         $scope.categories.push(d);
                     })
                     $scope.favorite.category = $scope.categories[0].id;
-
                 }
             )
-
-
         }
+
         $scope.cancel = function() {
             ngDialog.closeAll();
         }
+
         $scope.refresh();
 
         $scope.validate = function() {
             $http.post('/api/category/' + $scope.favorite.category + "/links", { id: null, name: $scope.favorite.name, path: $scope.favorite.link }).then(
                 function() {
-                    $scope.refresh();
+                    $scope.$parent.refresh();
                     ngDialog.closeAll();
                 }, function(error) {
                     alert(error.data.message);
                 }
             )
         }
-
     })
-
-
-
 
 
     .controller('FavoritesController', function($scope, $http, ngDialog) {
@@ -56,21 +51,6 @@ angular.module('favoriteApp', ['ngDialog'])
         $scope.mode = 'view';
 
         $scope.favorite = {};
-
-        $scope.setMode = function(text) {
-            if (text === 'creation') {
-                $scope.realCategories = $scope.categories.filter(function(c) { return c.id !== 0 });
-                var idx = $scope.realCategories.map(function(c) { return c.id }).indexOf($scope.filter.category);
-                if (idx < 0) idx = 0;
-
-                $scope.favorite = {
-                    name: '',
-                    link:'',
-                    category: $scope.realCategories[idx].id
-                }
-            }
-            $scope.mode = text;
-        }
 
         $scope.cancel = function() {
             $scope.setMode('view');
@@ -133,7 +113,9 @@ angular.module('favoriteApp', ['ngDialog'])
     $scope.add= function(){
         ngDialog.open({
             template: 'views/modal-add.html',
-            controller: 'AddController'
+            controller: 'AddController',
+            scope:$scope
+
         });
     }
 
